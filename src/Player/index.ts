@@ -1,6 +1,6 @@
 export class Player {
-  name: string
-  score: number
+  private name: string
+  private score: number
 
   constructor(name: string) {
     this.name = name
