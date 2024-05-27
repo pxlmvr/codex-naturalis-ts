@@ -1,5 +1,3 @@
-import { Corner } from './Corner'
-
 export enum CardColor {
   RED,
   BLUE,
