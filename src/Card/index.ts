@@ -1,3 +1,4 @@
+import { Maybe } from '@/utils/types/maybe'
 import { Corner } from './Corner'
 
 export enum CardColor {
@@ -29,11 +30,11 @@ const emptyCorner: Corner = {
 export const backCorners: Corner[] = Array(4).fill(emptyCorner, 0)
 
 export abstract class Card {
-  color: CardColor
-  private corners: Array<Corner | null>
+  private color: CardColor
+  private corners: Array<Maybe<Corner>>
   private front: boolean
 
-  constructor(color: CardColor, corners: Array<Corner | null>, front: boolean) {
+  constructor(color: CardColor, corners: Array<Maybe<Corner>>, front: boolean) {
     this.color = color
     this.corners = corners
     this.front = front
@@ -45,6 +46,10 @@ export abstract class Card {
 
   getFront(): boolean {
     return this.front
+  }
+
+  getColor(): CardColor {
+    return this.color
   }
 
   setFront(frontValue: boolean): void {

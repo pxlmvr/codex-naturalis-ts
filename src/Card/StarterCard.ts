@@ -2,20 +2,20 @@ import { Maybe } from '@/utils/types/maybe'
 import { Card, CardColor, CardResource } from '.'
 import { Corner } from './Corner'
 
-export class ResourceCard extends Card {
-  private resource: CardResource | null // Represent the potential resource in the middle of the card
+export class StarterCard extends Card {
+  private resources: CardResource[] // This represent the potential resource(s) in the middle of the card
 
   constructor(
     color: CardColor,
     corners: Array<Maybe<Corner>>,
     front: boolean,
-    resource: Maybe<CardResource>
+    resources: CardResource[]
   ) {
     super(color, corners, front)
-    this.resource = resource
+    this.resources = resources
   }
 
-  getResource(): Maybe<CardResource> {
-    return this.resource
+  getResources(): CardResource[] {
+    return this.resources
   }
 }
