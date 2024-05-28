@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid'
+
 import { Maybe } from '@/utils/types/maybe'
 import { Corner } from './Corner'
 
@@ -30,14 +32,22 @@ const emptyCorner: Corner = {
 export const backCorners: Corner[] = Array(4).fill(emptyCorner, 0)
 
 export abstract class Card {
+  /**  A unique identifyer for single card for deck filtering */
+  private id: string
+
   private color: CardColor
   private corners: Array<Maybe<Corner>>
   private front: boolean
 
   constructor(color: CardColor, corners: Array<Maybe<Corner>>, front: boolean) {
+    this.id = uuidv4()
     this.color = color
     this.corners = corners
     this.front = front
+  }
+
+  getCardId(): string {
+    return this.id
   }
 
   getCorners() {
